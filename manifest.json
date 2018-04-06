@@ -1,0 +1,38 @@
+{
+	"manifest_version": 2,
+	"name": "Nirvana for GTD (inofficial)",
+	"version": "0.0.1",
+
+	"description": "The 'Nirvana for GTD (inofficial) addon for Firefox lets you add new actions to your inbox without opening the web-client.",
+
+	"icons": {
+		"16": "images/nirvana-16.png",
+		"32": "images/nirvana-32.png",
+		"48": "images/nirvana-48.png"
+	},
+
+	"browser_action": {
+		"default_icon": "images/nirvana-32.png",
+		"default_title": "Nirvana for GTD (inofficial)"
+	},
+							        
+	"background": {
+		"scripts": ["background.js"]
+	},
+									        
+	"permissions": [
+		"tabs",
+		"storage"
+	],
+	
+	"options_ui": { 
+		"page": "options.html"
+	},
+
+	"applications": {
+		"gecko": {
+			"id": "nirvana-for-gtd-inofficial@jonas-hellmann.de"  
+		}
+	}
+
+}

@@ -1,7 +1,7 @@
 var getSettings = browser.storage.local.get("settings");
 getSettings.then((res) => {
 	const {settings} = res;
-	document.querySelector("#mail").value = settings.inboxmail;;
+	document.querySelector("#mail").value = settings.inboxmail;
 });
 
 function saveOptions(e) {

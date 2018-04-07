@@ -21,7 +21,7 @@ function handleInstalled(details) {
 
 function onUpdateSettings(settings) {
 	if(settings.inboxmail !== 'nirvana@example.com') {
-		browser.browserAction.setPopup({popup: 'popup.html'});
+		browser.browserAction.setPopup({popup: 'popup/popup.html'});
 	}
 	else {
 		browser.browserAction.setPopup({popup: ''});

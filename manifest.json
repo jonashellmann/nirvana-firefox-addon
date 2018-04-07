@@ -3,7 +3,7 @@
 	"name": "Nirvana for GTD (inofficial)",
 	"version": "0.0.1",
 
-	"description": "The 'Nirvana for GTD (inofficial) addon for Firefox lets you add new actions to your inbox without opening the web-client.",
+	"description": "The 'Nirvana for GTD (inofficial)' addon for Firefox lets you add new actions to your inbox without opening the web-client. Therefore it currently uses the possibility to create actions via mail. A mailto-link will open your mail program and you will only need to press the 'Send mail' button there.",
 
 	"icons": {
 		"16": "images/nirvana-16.png",

@@ -1,0 +1,52 @@
+body {
+	width: 400px;
+	padding: 20px;
+	color: black;
+	text-align: center;
+}
+
+h1 {
+	margin-left: 2,5%;
+	margin-right: 2,5%;
+	width: calc(92,5%-48px);
+	text-size: 26px;
+	text-align: center;
+	padding: 11px 0;
+}
+
+img {
+	width: 48px;
+	height: 48px;
+	margin-right: 2,5%;
+}
+
+#subject, #message, #submit, a {
+	border-radius: 10px;
+	height: 40px;
+	padding: 5px 10px;
+}
+
+label {
+	font-size: 120%;
+}
+
+label, #subject, #message {
+	width: 95%;
+	margin: 0 2,5%;
+}
+
+#submit, a {
+	width: 40%;
+	margin: 0 2,5%;
+}
+
+#submit {
+	background-color: blue;
+	color: white;
+}
+
+a {
+	background-color: white;
+	color: blue;
+	border: 1px solid blue;
+}

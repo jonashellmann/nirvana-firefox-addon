@@ -2,23 +2,35 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="popup.css" />
+		<link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet" /> 
 	</head>
 	
 	<body>
-		<h2>Nirvana for GTD (inofficial)</h2>
-		<img src="../images/nirvana-48.png" />
-		<label for="subject">Subject</label>
+		<div id="header">
+			<div id="title">
+				<h2>Nirvana for GTD (inofficial)</h2>
+			</div>
+			<img src="../images/nirvana-48.png" />
+		</div>
+		<label for="subject">Action Title</label>
 		<br />
 		<input id="subject" type="text" name="subject" />
 		<br />
 
-		<label for="message">Message</label>
+		<label for="message">Action Notes</label>
 		<br />
 		<textarea id="message" name="message"></textarea>
 		<br />
 
-		<div id="submit">Create action</div>
-		<a href="https://focus.nirvanahq.com">Open Nirvana</a>
+		<div id="links" >
+			<div id="submit">
+				<span>Create action</span>
+			</div>
+			<div id="nirvana">
+				<span>Open Nirvana</span>
+			</div>
+		</div>
+		
 		<script src="popup.js"></script>
 	</body>
 </html>

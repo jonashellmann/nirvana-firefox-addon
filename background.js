@@ -40,6 +40,9 @@ browser.runtime.onMessage.addListener(msg => {
 		var mailtourl = 'mailto:' + msg.inboxmail + '?subject=' + msg.subject + '&body=' + msg.message;
 		var creating = browser.tabs.create({url: mailtourl});
 	}
+	if(msg.type == 'open-nirvana') {
+		browser.tabs.create({url: 'https://focus.nirvanahq.com'});
+	}
 });
 var getSettings = browser.storage.local.get("settings"); 
 getSettings.then((res) => { 

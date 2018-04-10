@@ -3,24 +3,32 @@ body {
 	padding: 20px;
 	color: black;
 	text-align: center;
+	font-family: 'Tajawal', sans-serif;
 }
 
-h1 {
-	margin-left: 2,5%;
-	margin-right: 2,5%;
-	width: calc(92,5%-48px);
-	text-size: 26px;
+#header {
+	width: 100%;
+	display: flex;
+}
+
+#title {
+	height: 48px;
+}
+
+h2 {
+	width: calc(92.5%-48px);
+	font-size: 26px;
 	text-align: center;
-	padding: 11px 0;
+	padding: 5px 0;
+	margin: 0;
 }
 
 img {
 	width: 48px;
 	height: 48px;
-	margin-right: 2,5%;
 }
 
-#subject, #message, #submit, a {
+#subject, #message, #submit, #nirvana {
 	border-radius: 10px;
 	height: 40px;
 	padding: 5px 10px;
@@ -35,9 +43,23 @@ label, #subject, #message {
 	margin: 0 2,5%;
 }
 
-#submit, a {
+#message {
+	max-width: 380px;
+	height: 120px;
+}
+
+#links {
+	width: 100%;
+	display: flex;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#submit, #nirvana {
 	width: 40%;
-	margin: 0 2,5%;
+	margin: 10px 2.5%;
+	display: inline-block;
+	cursor: pointer;
 }
 
 #submit {
@@ -45,8 +67,15 @@ label, #subject, #message {
 	color: white;
 }
 
-a {
+#nirvana {
+	height: 36px;
 	background-color: white;
 	color: blue;
-	border: 1px solid blue;
+	border: 2px solid blue;
+}
+
+#submit span,
+#nirvana span {
+	padding-top: 5px;
+	display: inline-block;
 }

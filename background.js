@@ -36,6 +36,10 @@ browser.runtime.onMessage.addListener(msg => {
         const {settings} = msg.message;
         onUpdateSettings(settings);
     }
+	if(msg.type == 'send-mail') {
+		var mailtourl = 'mailto:' + msg.inboxmail + '?subject=' + msg.subject + '&body=' + msg.message;
+		var creating = browser.tabs.create({url: mailtourl});
+	}
 });
 var getSettings = browser.storage.local.get("settings"); 
 getSettings.then((res) => { 

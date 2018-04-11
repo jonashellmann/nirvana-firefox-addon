@@ -1,6 +1,17 @@
- .optionsForm {
+body {
+	font-family: "Raleway", sans-serif;
+	color: rgb(38, 103, 183);
+}
+
+h2 {
+	font-size: 50.4px;
+	font-weight: 700;
+	line-height: 55.4333px;
+	margin-bottom: 16.8px;
+}
+
+.optionsForm {
 	display: grid;
-	grid-template-columns: auto 1fr;
 	grid-auto-flow: row;
 	grid-gap: 10px;
 	line-height: 25px;
@@ -9,30 +20,42 @@
 .optionsForm > label {
 	grid-column: 1;
 	grid-row: auto;
-	font-size: 1.25rem;
-	text-shadow: 0 1px 1px #fefffe;
+	font-size: 16px;
 	display : block;
 	float : left;
 	text-align : left;
 	padding-right : 1em;
+	text-align: justify;
 }
 
 .optionsForm > input{
 	grid-column: 2;
 	grid-row: auto;
 	text-align : left;
+	color: rgb(38, 103, 183);
+	font-weight: 500;
+	font-size: 16px;
+	box-shadow: none;
+	border: 1px solid rgb(221, 221, 221);
+	padding: 0 20px;
 }
 
 button {
 	grid-column: 2;
 	grid-row: auto;
-	min-height: 30px;
-	border-radius: 2px;
+	height: 40px;
 	text-shadow: none;
+	background-color: rgb(38, 103, 183);
+	color: white;
+	display: inline-block;
+	font-size: 14.5px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	border: none;
 }
 
 .line {
-	grid-column: 1/3;
+	grid-column: 1/2;
 	grid-row: auto;
 	border: 0px;
 	border-bottom: 1px solid #c1c1c1;

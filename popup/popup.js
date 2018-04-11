@@ -16,4 +16,4 @@ document.getElementById('submit').addEventListener('click', function(){
 
 document.getElementById('nirvana').addEventListener('click', function(){
 	browser.runtime.sendMessage({type: 'open-nirvana'});
-}
+});

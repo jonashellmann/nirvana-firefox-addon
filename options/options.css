@@ -12,25 +12,21 @@ h2 {
 
 .optionsForm {
 	display: grid;
-	grid-auto-flow: row;
-	grid-gap: 10px;
 	line-height: 25px;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .optionsForm > label {
-	grid-column: 1;
-	grid-row: auto;
+	width: 30%;
 	font-size: 16px;
 	display : block;
-	float : left;
-	text-align : left;
 	padding-right : 1em;
 	text-align: justify;
 }
 
 .optionsForm > input{
-	grid-column: 2;
-	grid-row: auto;
+	width: 68%;
 	text-align : left;
 	color: rgb(38, 103, 183);
 	font-weight: 500;
@@ -40,9 +36,13 @@ h2 {
 	padding: 0 20px;
 }
 
+#empty {
+	width: 30%;
+	padding-right : 1em;
+}
+
 button {
-	grid-column: 2;
-	grid-row: auto;
+	width: 68%;
 	height: 40px;
 	text-shadow: none;
 	background-color: rgb(38, 103, 183);
@@ -52,12 +52,6 @@ button {
 	font-weight: 600;
 	letter-spacing: 2px;
 	border: none;
-}
-
-.line {
-	grid-column: 1/2;
-	grid-row: auto;
-	border: 0px;
-	border-bottom: 1px solid #c1c1c1;
+	margin-top: 10px;
 }
 

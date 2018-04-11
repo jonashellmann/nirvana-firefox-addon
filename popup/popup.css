@@ -3,44 +3,39 @@ body {
 	padding: 20px;
 	color: black;
 	text-align: center;
-	font-family: 'Tajawal', sans-serif;
-}
-
-#header {
-	width: 100%;
-	display: flex;
-}
-
-#title {
-	height: 48px;
-}
-
-h2 {
-	width: calc(92.5%-48px);
-	font-size: 26px;
-	text-align: center;
-	padding: 5px 0;
-	margin: 0;
+	font-family: "Raleway", sans-serif;
+	color: rgb(38, 103, 183);
 }
 
 img {
-	width: 48px;
-	height: 48px;
+	width: 100%;
+	height: auto;
 }
 
 #subject, #message, #submit, #nirvana {
-	border-radius: 10px;
+	border-radius: 2px;
 	height: 40px;
 	padding: 5px 10px;
 }
 
 label {
 	font-size: 120%;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 55.4333px;
 }
 
 label, #subject, #message {
 	width: 95%;
 	margin: 0 2,5%;
+}
+
+#subject, #message {
+	color: rgb(38, 103, 183);
+	font-weight: 600;
+	font-size: 16px;
+	box-shadow: none;
+	border: 1px solid rgb(221, 221, 221);
 }
 
 #message {
@@ -63,19 +58,22 @@ label, #subject, #message {
 }
 
 #submit {
-	background-color: blue;
+	background-color: rgb(38, 103, 183);
 	color: white;
 }
 
 #nirvana {
 	height: 36px;
 	background-color: white;
-	color: blue;
-	border: 2px solid blue;
+	color: rgb(38, 103, 183);
+	border: 2px solid rgb(38, 103, 183);
 }
 
 #submit span,
 #nirvana span {
-	padding-top: 5px;
+	padding-top: 10px;
 	display: inline-block;
+	font-size: 14.5px;
+	font-weight: 600;
+	letter-spacing: 2px;
 }

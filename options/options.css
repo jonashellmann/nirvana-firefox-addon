@@ -1,6 +1,6 @@
 body {
 	font-family: "Raleway", sans-serif;
-	color: rgb(38, 103, 183);
+	color: black;
 }
 
 h2 {
@@ -28,7 +28,7 @@ h2 {
 .optionsForm > input{
 	width: 68%;
 	text-align : left;
-	color: rgb(38, 103, 183);
+	color: black;
 	font-weight: 500;
 	font-size: 16px;
 	box-shadow: none;
@@ -53,5 +53,6 @@ button {
 	letter-spacing: 2px;
 	border: none;
 	margin-top: 10px;
+	text-align: center;
 }
 

@@ -13,7 +13,7 @@
 
 	"browser_action": {
 		"default_icon": "images/nirvana-32.png",
-		"default_title": "Nirvana for GTD (inofficial)"
+		"default_title": "Action Creator for Nirvana"
 	},
 							        
 	"background": {
@@ -31,7 +31,7 @@
 
 	"applications": {
 		"gecko": {
-			"id": "nirvana-for-gtd-inofficial@jonas-hellmann.de"  
+			"id": "action-creator-for-nirvana@jonas-hellmann.de"
 		}
 	}
 

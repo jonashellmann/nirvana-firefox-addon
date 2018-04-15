@@ -20,7 +20,7 @@ function handleInstalled(details) {
 }
 
 function onUpdateSettings(settings) {
-	if(settings.inboxmail !== 'nirvana@example.com') {
+	if(settings.inboxmail !== 'example@nirvana.com') {
 		browser.browserAction.setPopup({popup: 'popup/popup.html'});
 	}
 	else {
@@ -37,7 +37,7 @@ browser.runtime.onMessage.addListener(msg => {
         onUpdateSettings(settings);
     }
 	if(msg.type == 'send-mail') {
-		var mailtourl = 'mailto:' + msg.inboxmail + '?subject=' + msg.subject + '&body=' + msg.message;
+		var mailtourl = 'mailto:' + msg.inboxmail + '?subject=' + msg.subject + '&body=' + escape(msg.message);
 		var creating = browser.tabs.create({url: mailtourl});
 	}
 	if(msg.type == 'open-nirvana') {

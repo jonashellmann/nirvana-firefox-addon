@@ -6,13 +6,12 @@
 	"description": "The 'Action Creator for Nirvana' addon for Firefox lets you add new actions to your inbox without opening the web-client. Therefore it currently uses the possibility to create actions via mail. A mailto-link will open your mail program and you will only need to press the 'Send mail' button there. The addon is not affiliated with or created by Nirvana.",
 
 	"icons": {
-		"16": "images/nirvana-16.png",
-		"32": "images/nirvana-32.png",
-		"48": "images/nirvana-48.png"
+		"16": "images/action-creator-for-nirvana-16.png",
+		"32": "images/action-creator-for-nirvana-32.png"
 	},
 
 	"browser_action": {
-		"default_icon": "images/nirvana-32.png",
+		"default_icon": "images/action-creator-for-nirvana-32.png",
 		"default_title": "Action Creator for Nirvana"
 	},
 							        

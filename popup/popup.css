@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Rubik');
+
 body {
 	width: 400px;
 	padding: 20px;
@@ -20,9 +22,12 @@ img {
 
 label {
 	font-size: 120%;
-	font-size: 30px;
-	font-weight: 700;
+	font-size: 25px;
+	font-weight: 100;
 	line-height: 55.4333px;
+	font-family: "Rubik", "Raleway", sans-serif;
+	text-transform: uppercase;
+	color: grey;
 }
 
 label, #subject, #message {

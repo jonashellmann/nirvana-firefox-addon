@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
 body {
-	font-family: "Raleway", sans-serif;
-	color: black;
+	color: rgb(29, 29, 29);
+	font-family: "Fira Sans", sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
 }
 
 h2 {
-	font-size: 50.4px;
-	font-weight: 700;
+	font-size: 36px;
+	font-style: normal;
+	color: rgb(52, 58, 64);
 	line-height: 55.4333px;
 	margin-bottom: 16.8px;
 }
@@ -19,7 +25,6 @@ h2 {
 
 .optionsForm > label {
 	width: 30%;
-	font-size: 16px;
 	display : block;
 	padding-right : 1em;
 	text-align: justify;

@@ -12,6 +12,7 @@ body {
 img {
 	width: 100%;
 	height: auto;
+	margin-bottom: 10px;
 }
 
 #subject, #message, #submit, #nirvana {
@@ -21,12 +22,9 @@ img {
 }
 
 label {
-	font-size: 120%;
-	font-size: 25px;
-	font-weight: 100;
-	line-height: 55.4333px;
+	font-size: 20px;
+	line-height: 30px;
 	font-family: "Rubik", "Raleway", sans-serif;
-	text-transform: uppercase;
 	color: grey;
 }
 

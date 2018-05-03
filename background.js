@@ -29,6 +29,21 @@ function onUpdateSettings(settings) {
     
 }
 
+function openNirvana() {
+	var querying = browser.tabs.query({url: 'https://focus.nirvanahq.com/'});
+	querying.then((tab) => {
+		if(tab.length > 0) 
+		{
+			browser.tabs.update(tab[0].id, { active: true });
+		} 
+		else 
+		{
+			browser.tabs.create({url: 'https://focus.nirvanahq.com', active: true});
+		}
+	});
+ 
+}
+
 browser.browserAction.onClicked.addListener(buttonClicked);
 browser.runtime.onInstalled.addListener(handleInstalled);
 browser.runtime.onMessage.addListener(msg => {
@@ -41,7 +56,7 @@ browser.runtime.onMessage.addListener(msg => {
 		var creating = browser.tabs.create({url: mailtourl});
 	}
 	if(msg.type == 'open-nirvana') {
-		browser.tabs.create({url: 'https://focus.nirvanahq.com'});
+		openNirvana();
 	}
 });
 var getSettings = browser.storage.local.get("settings"); 

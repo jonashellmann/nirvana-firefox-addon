@@ -5,7 +5,7 @@ Please notice: The addon is not affiliated with or created by Nirvana.
 
 # Installation steps
 
-* The first step is to download the addon in the official Firefox addon store. You can find it here: 
+* The first step is to download the addon in the official Firefox addon store. You can find it here: https://addons.mozilla.org/en-US/firefox/addon/action-creator-for-nirvana/
 * After the installation was successful a new icon will appear in the addon bar of Firefox
 * By clicking on the icon a settings page will open, where you can configure your inbox mail adress
 ** You can find this mail adress in the web client (https://focus.nirvanahq.com) under 'Settings' -> 'My Account' -> 'Creating Tasks via Email'

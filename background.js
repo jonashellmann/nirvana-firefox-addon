@@ -52,7 +52,7 @@ browser.runtime.onMessage.addListener(msg => {
         onUpdateSettings(settings);
     }
 	if(msg.type == 'send-mail') {
-		var mailtourl = 'mailto:' + msg.inboxmail + '?subject=' + msg.subject + '&body=' + escape(msg.message);
+		var mailtourl = 'mailto:' + encodeURIComponent(msg.inboxmail) + '?subject=' + encodeURIComponent(msg.subject) + '&body=' + encodeURIComponent(msg.message);
 		var creating = browser.tabs.create({url: mailtourl});
 	}
 	if(msg.type == 'open-nirvana') {

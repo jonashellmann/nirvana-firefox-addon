@@ -62,11 +62,11 @@ function createTask(msg) {
 			
 			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
 				.then(data =>
-					/* browser.runtime.sendMessage({
+					// TODO Analyze JSON if request was indeed successful
+					browser.runtime.sendMessage({
 						type: 'success-detected',
 						message: 'Action successfully created'
-					}) */
-					console.log(data)
+					})
 				)
 				.catch(error => 
 					browser.runtime.sendMessage({

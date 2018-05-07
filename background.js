@@ -55,12 +55,9 @@ function createTask(msg) {
 		getAuthToken(msg.username, msg.password)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
-			
-			// TODO Body String
-			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + msg.subject + '","_name":' + now +',"tags":"' + msg.tags + '","_tags":' + now + ',"note":"' + msg.note + '","_note":' + now + '}]';
-			
+
+			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + msg.subject + '","_name":' + now +',"tags":"' + msg.tags + '","_tags":' + now + ',"note":"' + msg.message + '","_note":' + now + '}]';			
 			var headers = new Headers();
-			// TODO Content Type ?
 			headers.append('Content-Type', 'application/json');
 			
 			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
@@ -91,8 +88,6 @@ function getAuthToken(username, passwordHash) {
 }
 
 function postData(url, headers, body) {
-	
-	
 	return fetch(url, {
 		headers: headers,
 		body: body,
@@ -110,10 +105,10 @@ function uuidv4() {
 browser.browserAction.onClicked.addListener(buttonClicked);
 browser.runtime.onInstalled.addListener(handleInstalled);
 browser.runtime.onMessage.addListener(msg => {
-    if(msg.type == "settings-updated") {
-        const {settings} = msg.message;
-        onUpdateSettings(settings);
-    }
+	if(msg.type == "settings-updated") {
+		const {settings} = msg.message;
+		onUpdateSettings(settings);
+	}
 	if(msg.type == 'create-task') {
 		createTask(msg);
 	}

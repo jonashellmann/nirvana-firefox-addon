@@ -9,8 +9,6 @@ document.getElementById('submit').addEventListener('click', function(){
 			password: settings.password,
 			subject: document.getElementById('subject').value,
 			message: document.getElementById('message').value,
-			// TODO Input for Note and tags if username/password
-			note: '',
 			tags: ''
 		});
 	});
@@ -38,5 +36,17 @@ browser.runtime.onMessage.addListener(msg => {
 		s.style.display = 'none';
 
 		e.innerHTML = msg.message;
+	}
+});
+
+var getSettings = browser.storage.local.get("settings");
+getSettings.then((res) => {
+	const {settings} = res;
+	
+	if(settings.username !== '' && settings.username !== 'username@example.com' && settings.password !== '') {
+		var tags = document.getElementsByClassName('tags');
+		for (var i = 0; i < tags.length; i++) {
+			tags[i].style.display = 'inline';
+		}
 	}
 });

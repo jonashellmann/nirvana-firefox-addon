@@ -15,7 +15,7 @@ img {
 	margin-bottom: 10px;
 }
 
-#subject, #message, #submit, #nirvana {
+#subject, #message, #submit, #nirvana, #tags {
 	border-radius: 2px;
 	height: 40px;
 	padding: 5px 10px;
@@ -28,12 +28,12 @@ label {
 	color: grey;
 }
 
-label, #subject, #message {
+label, #subject, #message, #tags {
 	width: 95%;
 	margin: 0 2,5%;
 }
 
-#subject, #message {
+#subject, #message, #tags {
 	color: rgb(38, 103, 183);
 	font-weight: 600;
 	font-size: 16px;
@@ -44,6 +44,10 @@ label, #subject, #message {
 #message {
 	max-width: 380px;
 	height: 120px;
+}
+
+.tags {
+	display: none;
 }
 
 #links {

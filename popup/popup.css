@@ -80,3 +80,19 @@ label, #subject, #message {
 	font-weight: 600;
 	letter-spacing: 2px;
 }
+
+#success, #error {
+	margin: 10px;
+	padding 10px 20px;
+	width: 100%;
+	display: none;
+	color: white;
+}
+
+#success {
+	background-color: #006400;
+}
+
+#error {
+	background-color: #CD0000;
+}

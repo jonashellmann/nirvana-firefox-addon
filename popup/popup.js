@@ -16,3 +16,24 @@ document.getElementById('submit').addEventListener('click', function(){
 document.getElementById('nirvana').addEventListener('click', function(){
 	browser.runtime.sendMessage({type: 'open-nirvana'});
 });
+
+browser.runtime.onMessage.addListener(msg => {
+	if(msg.type == "success-detected") {
+		var e = document.getElementById('error');
+		var s = document.getElementById('success');
+
+		e.style.display = 'none';
+		s.style.display = 'block';
+
+		s.innerHTML = msg.message;
+	}
+	if(msg.type == 'create-task') {
+		var e = document.getElementById('error');
+		var s = document.getElementById('success');
+		
+		e.style.display = 'block';
+		s.style.display = 'none';
+
+		e.innerHTML = msg.message;
+	}
+});

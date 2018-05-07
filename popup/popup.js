@@ -8,7 +8,10 @@ document.getElementById('submit').addEventListener('click', function(){
 			username: settings.username,
 			password: settings.password,
 			subject: document.getElementById('subject').value,
-			message: document.getElementById('message').value
+			message: document.getElementById('message').value,
+			// TODO Input for Note and tags if username/password
+			note: '',
+			tags: ''
 		});
 	});
 });

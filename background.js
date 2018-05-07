@@ -56,9 +56,8 @@ function createTask(msg) {
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
 			
-			var body = '';
 			// TODO Body String
-			// var body = '{"method": "task.save", "id": "' + uuidv4() + '", "type": 0, "_type": ' + now + ', "state": 0, "_state": ' + now + ', "name": "' + msg.subject + '", "_name": ' + now + '}';
+			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + msg.subject + '","_name":' + now +',"tags":"' + msg.tags + '","_tags":' + now + ',"note":"' + msg.note + '","_note":' + now + '}]';
 			
 			var headers = new Headers();
 			// TODO Content Type ?

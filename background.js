@@ -55,39 +55,51 @@ function createTask(msg) {
 		getAuthToken(msg.username, msg.password)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
-			postData(
-				'https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, 
-				{method: 'task.save', id: uuidv4(), type: 0, _type: now, state: 0, _state: now, name: msg.subject, _name: now, notes: msg.message, _notes: now})
-			.then(data => 
-				browser.runtime.sendMessage({
-					type: 'success-detected',
-					message: 'Action uccessfully created'
-				})
-			)
-			.catch(error => 
-				browser.runtime.sendMessage({
-					type: 'error-detected',
-					message: 'Authentication failed. Wrong password or username.' + error
-				})
-			);
+			
+			var body = '';
+			// TODO Body String
+			// var body = '{"method": "task.save", "id": "' + uuidv4() + '", "type": 0, "_type": ' + now + ', "state": 0, "_state": ' + now + ', "name": "' + msg.subject + '", "_name": ' + now + '}';
+			
+			var headers = new Headers();
+			// TODO Content Type ?
+			headers.append('Content-Type', 'application/json');
+			
+			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
+				.then(data =>
+					/* browser.runtime.sendMessage({
+						type: 'success-detected',
+						message: 'Action successfully created'
+					}) */
+					console.log(data)
+				)
+				.catch(error => 
+					browser.runtime.sendMessage({
+						type: 'error-detected',
+						message: 'Authentication failed. Wrong password or username.' + error
+					})
+				);
 		});
 	}
 }
 
 function getAuthToken(username, passwordHash) {
-	postData('https://nirvanahq.com/api?api=rest', {method: 'auth.new', u: username, p: passwordHash})
-	.then(response => response.results[0].auth.token);
-}
-
-function postData(url, data) {
+	var body = 'method=auth.new&u=' + username + '&p=' + passwordHash;
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
+	
+	return postData('https://nirvanahq.com/api?api=rest', headers, body)
+		.then(response => response.results[0].auth.token);
+}
+
+function postData(url, headers, body) {
+	
+	
 	return fetch(url, {
-		headers: headers;
-		body: JSON.stringify(data),
+		headers: headers,
+		body: body,
 		method: 'POST'
 	})
-	.then(response => response.json());
+		.then(response => response.json());
 }
 
 function uuidv4() {

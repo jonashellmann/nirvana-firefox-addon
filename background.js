@@ -65,26 +65,26 @@ function createTask(msg) {
 }
 
 function getAuthToken(username, passwordHash) {
-	// TODO Implementieren
-	postData('https://nirvanahq.com/api?api=rest', {method: 'auth.new', u: username, p: password})
+	postData('https://nirvanahq.com/api?api=rest', {method: 'auth.new', u: username, p: passwordHash})
 	.then(response => response); // TODO Token aus Response auslesen
 }
 
 function postData(url, data) {
-	var body = JSON.stringify(data);
+	var headers = new Headers();
+	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	return fetch(url, {
+		headers: headers;
 		body: JSON.stringify(data),
 		method: 'POST'
 	})
 	.then(response => response.json());
 }
 
-// TODO Wird zum Erstellen der Aufgabe benötigt
-/* function uuidv4() {
+function uuidv4() {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   )
-} */
+}
 
 browser.browserAction.onClicked.addListener(buttonClicked);
 browser.runtime.onInstalled.addListener(handleInstalled);

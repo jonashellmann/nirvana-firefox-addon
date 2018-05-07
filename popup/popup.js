@@ -9,7 +9,7 @@ document.getElementById('submit').addEventListener('click', function(){
 			password: settings.password,
 			subject: document.getElementById('subject').value,
 			message: document.getElementById('message').value,
-			tags: ''
+			tags: document.getElementById('tags').value
 		});
 	});
 });

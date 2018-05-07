@@ -58,15 +58,25 @@ function createTask(msg) {
 			postData(
 				'https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, 
 				{method: 'task.save', id: uuidv4(), type: 0, _type: now, state: 0, _state: now, name: msg.subject, _name: now, notes: msg.message, _notes: now})
-			.then(data => console.log(data))
-			.catch(error => console.log('Error: ' + error));
+			.then(data => 
+				browser.runtime.sendMessage({
+					type: 'success-detected',
+					message: 'Action uccessfully created'
+				})
+			)
+			.catch(error => 
+				browser.runtime.sendMessage({
+					type: 'error-detected',
+					message: 'Authentication failed. Wrong password or username.' + error
+				})
+			);
 		});
 	}
 }
 
 function getAuthToken(username, passwordHash) {
 	postData('https://nirvanahq.com/api?api=rest', {method: 'auth.new', u: username, p: passwordHash})
-	.then(response => response); // TODO Token aus Response auslesen
+	.then(response => response.results[0].auth.token);
 }
 
 function postData(url, data) {

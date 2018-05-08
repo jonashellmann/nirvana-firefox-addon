@@ -1,6 +1,6 @@
 document.getElementById('submit').addEventListener('click', function(){
 	showLoad();
-	initActionCreation();
+	initActionCreation(false);
 });
 
 document.getElementById('nirvana').addEventListener('click', function(){
@@ -13,6 +13,9 @@ browser.runtime.onMessage.addListener(msg => {
 	}
 	if(msg.type == 'error-detected') {
 		showError(msg.message);
+		if(msg.sendViaMail) {
+			initActionCreation(true);
+		}
 	}
 });
 
@@ -61,7 +64,7 @@ function show(show, hide1, hide2, message) {
 	show.innerHTML = message;
 }
 
-function initActionCreation() {
+function initActionCreation(sendViaMail) {
 	var getSettings = browser.storage.local.get("settings");
 	getSettings.then((res) => {
 		const {settings} = res;
@@ -72,7 +75,8 @@ function initActionCreation() {
 			password: settings.password,
 			subject: document.getElementById('subject').value,
 			message: document.getElementById('message').value,
-			tags: document.getElementById('tags').value
+			tags: document.getElementById('tags').value,
+			sendViaMail: sendViaMail
 		});
 	});
 }

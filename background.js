@@ -51,12 +51,13 @@ function createTask(msg) {
 	if(msg.subject === '') {
 		browser.runtime.sendMessage({
 			type: 'error-detected',
-			message: 'A Task needs a title!'
+			message: 'A Task needs a title!',
+			sendViaMail: false
 		});
 		return;
 	}
 	
-	if((msg.username == 'username@example.com' || msg.password == '')) {
+	if((msg.username == 'username@example.com' || msg.password == '') || msg.sendViaMail === true) {
 		createTaskViaMail(msg.inboxmail, msg.subject, msg.message);
 	}
 	else {
@@ -90,14 +91,16 @@ function createTaskViaAPI(username, password, subject, note, tags) {
 					else {
 						browser.runtime.sendMessage({
 							type: 'error-detected',
-							message: 'Action couldn\'t be created.'
+							message: 'Action couldn\'t be created.',
+							sendViaMail: true
 						})
 					}
 				})
 				.catch(error => 
 					browser.runtime.sendMessage({
 						type: 'error-detected',
-						message: 'Authentication failed. Wrong username or password!'
+						message: 'Authentication failed. Wrong username or password!',
+						sendViaMail: true
 					})
 				);
 		});

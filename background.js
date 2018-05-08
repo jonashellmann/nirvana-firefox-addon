@@ -57,21 +57,31 @@ function createTask(msg) {
 	}
 	
 	if((msg.username == 'username@example.com' || msg.password == '')) {
-		var mailtourl = 'mailto:' + encodeURIComponent(msg.inboxmail) + '?subject=' + encodeURIComponent(msg.subject) + '&body=' + encodeURIComponent(msg.message);
-		var creating = browser.tabs.create({url: mailtourl});
+		createTaskViaMail(msg.inboxmail, msg.subject, msg.message);
 	}
 	else {
-		getAuthToken(msg.username, msg.password)
+		createTaskViaAPI(msg.username, msg.password, msg.subject, msg.message, msg.tags);
+	}
+	
+}
+
+function createTaskViaMail(inboxmail, subject, message) {
+	var mailtourl = 'mailto:' + encodeURIComponent(inboxmail) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+	var creating = browser.tabs.create({url: mailtourl});
+}
+
+function createTaskViaAPI(username, password, subject, note, tags) {
+	getAuthToken(username, password)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
 
-			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + msg.subject + '","_name":' + now +',"tags":"' + msg.tags + '","_tags":' + now + ',"note":"' + msg.message + '","_note":' + now + '}]';			
+			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + subject + '","_name":' + now +',"tags":"' + tags + '","_tags":' + now + ',"note":"' + note + '","_note":' + now + '}]';			
 			var headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			
 			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
 				.then(data => {
-					if(data.results[0].task.name === msg.subject){
+					if(data.results[0].task.name === subject){
 						browser.runtime.sendMessage({
 							type: 'success-detected',
 							message: 'Action successfully created'
@@ -91,8 +101,6 @@ function createTask(msg) {
 					})
 				);
 		});
-	}
-	
 }
 
 function getAuthToken(username, passwordHash) {

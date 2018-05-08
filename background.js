@@ -40,7 +40,6 @@ function openNirvana() {
 		} 
 		else 
 		{
-			// TODO Login, wenn Benutzername und Passwort gesetzt
 			browser.tabs.create({url: 'https://focus.nirvanahq.com', active: true});
 		}
 	});

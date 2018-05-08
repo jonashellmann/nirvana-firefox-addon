@@ -47,6 +47,15 @@ function openNirvana() {
 }
 
 function createTask(msg) {
+	
+	if(msg.subject === '') {
+		browser.runtime.sendMessage({
+			type: 'error-detected',
+			message: 'A Task needs a title!'
+		});
+		return;
+	}
+	
 	if((msg.username == 'username@example.com' || msg.password == '')) {
 		var mailtourl = 'mailto:' + encodeURIComponent(msg.inboxmail) + '?subject=' + encodeURIComponent(msg.subject) + '&body=' + encodeURIComponent(msg.message);
 		var creating = browser.tabs.create({url: mailtourl});
@@ -83,6 +92,7 @@ function createTask(msg) {
 				);
 		});
 	}
+	
 }
 
 function getAuthToken(username, passwordHash) {

@@ -28,7 +28,7 @@ browser.runtime.onMessage.addListener(msg => {
 
 		s.innerHTML = msg.message;
 	}
-	if(msg.type == 'create-task') {
+	if(msg.type == 'error-detected') {
 		var e = document.getElementById('error');
 		var s = document.getElementById('success');
 		

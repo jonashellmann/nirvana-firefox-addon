@@ -23,13 +23,21 @@ var getSettings = browser.storage.local.get("settings");
 getSettings.then((res) => {
 	const {settings} = res;
 	
-	if(settings.username !== '' && settings.username !== 'username@example.com' && settings.password !== '') {
+	if(isUsernameDefined(settings.username) && isPasswordDefined(settings.password)) {
 		var tags = document.getElementsByClassName('tags');
 		for (var i = 0; i < tags.length; i++) {
 			tags[i].style.display = 'inline';
 		}
 	}
 });
+
+function isUsernameDefined(username) {
+	return username !== '' && username !== 'username@example.com';
+}
+
+function isPasswordDefined(password) {
+	return password !== '' && password !== 'd41d8cd98f00b204e9800998ecf8427e'; // Password empty or hash of empty string
+}
 
 function showLoad() {
 	var message = 'Loading ...';

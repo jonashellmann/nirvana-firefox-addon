@@ -112,7 +112,8 @@ function getAuthToken(username, passwordHash) {
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	
 	return postData('https://nirvanahq.com/api?api=rest', headers, body)
-		.then(response => response.results[0].auth.token);
+		.then(response => response.results[0].auth.token)
+		.catch(error => error);
 }
 
 function postData(url, headers, body) {

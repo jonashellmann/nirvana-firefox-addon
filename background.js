@@ -61,17 +61,24 @@ function createTask(msg) {
 			headers.append('Content-Type', 'application/json');
 			
 			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
-				.then(data =>
-					// TODO Analyze JSON if request was indeed successful
-					browser.runtime.sendMessage({
-						type: 'success-detected',
-						message: 'Action successfully created'
-					})
-				)
+				.then(data => {
+					if(data.results[0].task.name === msg.subject){
+						browser.runtime.sendMessage({
+							type: 'success-detected',
+							message: 'Action successfully created'
+						})
+					}
+					else {
+						browser.runtime.sendMessage({
+							type: 'error-detected',
+							message: 'Action couldn\'t be created.'
+						})
+					}
+				})
 				.catch(error => 
 					browser.runtime.sendMessage({
 						type: 'error-detected',
-						message: 'Authentication failed. Wrong password or username.' + error
+						message: 'Authentication failed. Wrong username or password!'
 					})
 				);
 		});

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Action Creator for Nirvana",
-	"version": "1.0.0",
+	"version": "1.1.0",
 
 	"description": "The 'Action Creator for Nirvana' addon for Firefox lets you add new actions to your inbox of Nirvana for GTD® (nirvanahq.com) without opening the web-client. Therefore it currently uses the possibility to create actions via mail. A mailto-link will open your mail program and you will only need to press the 'Send mail' button there. The addon is not affiliated with or created by Nirvana.",
 

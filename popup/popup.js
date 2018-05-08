@@ -1,17 +1,6 @@
 document.getElementById('submit').addEventListener('click', function(){
-	var getSettings = browser.storage.local.get("settings");
-	getSettings.then((res) => {
-		const {settings} = res;
-		browser.runtime.sendMessage({
-			type: 'create-task',
-			inboxmail: settings.inboxmail,
-			username: settings.username,
-			password: settings.password,
-			subject: document.getElementById('subject').value,
-			message: document.getElementById('message').value,
-			tags: document.getElementById('tags').value
-		});
-	});
+	showLoad();
+	initActionCreation();
 });
 
 document.getElementById('nirvana').addEventListener('click', function(){
@@ -20,22 +9,10 @@ document.getElementById('nirvana').addEventListener('click', function(){
 
 browser.runtime.onMessage.addListener(msg => {
 	if(msg.type == "success-detected") {
-		var e = document.getElementById('error');
-		var s = document.getElementById('success');
-
-		e.style.display = 'none';
-		s.style.display = 'block';
-
-		s.innerHTML = msg.message;
+		showSuccess(msg.message);
 	}
 	if(msg.type == 'error-detected') {
-		var e = document.getElementById('error');
-		var s = document.getElementById('success');
-		
-		e.style.display = 'block';
-		s.style.display = 'none';
-
-		e.innerHTML = msg.message;
+		showError(msg.message);
 	}
 });
 
@@ -50,3 +27,52 @@ getSettings.then((res) => {
 		}
 	}
 });
+
+function showLoad() {
+	var message = 'Loading ...';
+	show(
+		document.getElementById('load'),
+		document.getElementById('success'),
+		document.getElementById('error'),
+		message);
+}
+
+function showSuccess(message) {
+	show(
+		document.getElementById('success'),
+		document.getElementById('error'),
+		document.getElementById('load'),
+		message);
+}
+
+function showError(message) {
+	show(
+		document.getElementById('error'),
+		document.getElementById('success'),
+		document.getElementById('load'),
+		message);
+}
+
+function show(show, hide1, hide2, message) {
+	show.style.display = 'block';
+	hide1.style.display = 'none';
+	hide2.style.display = 'none';
+
+	show.innerHTML = message;
+}
+
+function initActionCreation() {
+	var getSettings = browser.storage.local.get("settings");
+	getSettings.then((res) => {
+		const {settings} = res;
+		browser.runtime.sendMessage({
+			type: 'create-task',
+			inboxmail: settings.inboxmail,
+			username: settings.username,
+			password: settings.password,
+			subject: document.getElementById('subject').value,
+			message: document.getElementById('message').value,
+			tags: document.getElementById('tags').value
+		});
+	});
+}

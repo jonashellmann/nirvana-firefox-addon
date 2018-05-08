@@ -85,12 +85,16 @@ label, #subject, #message, #tags {
 	letter-spacing: 2px;
 }
 
-#success, #error {
+#success, #error, #load {
 	margin: 10px;
 	padding 10px 20px;
 	width: 100%;
 	display: none;
 	color: white;
+}
+
+#load {
+	background-color: #0000FF;
 }
 
 #success {

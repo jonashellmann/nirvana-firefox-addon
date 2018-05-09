@@ -46,13 +46,8 @@ function openNirvana() {
 }
 
 function createTask(msg) {
-	
 	if(msg.subject === '') {
-		browser.runtime.sendMessage({
-			type: 'error-detected',
-			message: 'A Task needs a title!',
-			sendViaMail: false
-		});
+		sendErrorMessage('A Task needs a title!', false);
 		return;
 	}
 	
@@ -62,7 +57,6 @@ function createTask(msg) {
 	else {
 		createTaskViaAPI(msg.username, msg.password, msg.subject, msg.message, msg.tags);
 	}
-	
 }
 
 function createTaskViaMail(inboxmail, subject, message) {
@@ -82,26 +76,13 @@ function createTaskViaAPI(username, password, subject, note, tags) {
 			postData('https://api.nirvanahq.com/?api=json&appid=gem&authtoken=' + token, headers, body)
 				.then(data => {
 					if(data.results[0].task.name === subject){
-						browser.runtime.sendMessage({
-							type: 'success-detected',
-							message: 'Action successfully created'
-						})
+						sendSuccessMessage('Action successfully created');
 					}
 					else {
-						browser.runtime.sendMessage({
-							type: 'error-detected',
-							message: 'Action couldn\'t be created.',
-							sendViaMail: true
-						})
+						sendErrorMessage('Action couldn\'t be created.', true);
 					}
 				})
-				.catch(error => 
-					browser.runtime.sendMessage({
-						type: 'error-detected',
-						message: 'Authentication failed. Wrong username or password!',
-						sendViaMail: true
-					})
-				);
+				.catch(error => sendErrorMessage('Authentication failed. Wrong username or password!', true));
 		});
 }
 
@@ -128,6 +109,21 @@ function uuidv4() {
   return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   )
+}
+
+function sendErrorMessage(type, message, sendViaMail) {
+	browser.runtime.sendMessage({
+		type: 'error-detected',
+		message: message,
+		sendViaMail: sendViaMail
+	});
+}
+
+function sendSuccessMessage(message) {
+	browser.runtime.sendMessage({
+		type: 'success-detected',
+		message: message
+	});
 }
 
 browser.browserAction.onClicked.addListener(buttonClicked);

@@ -111,7 +111,7 @@ function uuidv4() {
   )
 }
 
-function sendErrorMessage(type, message, sendViaMail) {
+function sendErrorMessage(message, sendViaMail) {
 	browser.runtime.sendMessage({
 		type: 'error-detected',
 		message: message,

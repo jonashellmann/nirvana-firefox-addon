@@ -7,6 +7,10 @@ document.getElementById('nirvana').addEventListener('click', function(){
 	browser.runtime.sendMessage({type: 'open-nirvana'});
 });
 
+document.getElementById('settings').addEventListener('click', function(){
+	browser.runtime.sendMessage({type: 'open-settings'});
+});
+
 browser.runtime.onMessage.addListener(msg => {
 	if(msg.type == "success-detected") {
 		showSuccess(msg.message);

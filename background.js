@@ -4,7 +4,7 @@ function buttonClicked() {
 		const {settings} = res;
 		var inboxmail = settings.inboxmail;
 		if(inboxmail === 'example@nirvana.com') {
-			browser.runtime.openOptionsPage();
+			openOptionsPage();
 		}
 	});
 }
@@ -126,6 +126,10 @@ function sendSuccessMessage(message) {
 	});
 }
 
+function openOptionsPage() {
+	browser.runtime.openOptionsPage();
+}
+
 browser.browserAction.onClicked.addListener(buttonClicked);
 browser.runtime.onInstalled.addListener(handleInstalled);
 browser.runtime.onMessage.addListener(msg => {
@@ -138,6 +142,9 @@ browser.runtime.onMessage.addListener(msg => {
 	}
 	if(msg.type == 'open-nirvana') {
 		openNirvana();
+	}
+	if(msg.type == 'open-settings') {
+		openOptionsPage();
 	}
 });
 var getSettings = browser.storage.local.get("settings"); 

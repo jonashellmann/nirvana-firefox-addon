@@ -7,7 +7,7 @@ document.getElementById('nirvana').addEventListener('click', function(){
 	browser.runtime.sendMessage({type: 'open-nirvana'});
 });
 
-document.getElementById('settings').addEventListener('click', function(){
+document.getElementById('main-image').addEventListener('click', function(){
 	browser.runtime.sendMessage({type: 'open-settings'});
 });
 

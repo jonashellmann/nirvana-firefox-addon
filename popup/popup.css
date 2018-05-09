@@ -3,17 +3,20 @@
 body {
 	width: 400px;
 	padding: 20px;
+	padding-bottom: 0;
 	color: black;
 	text-align: center;
 	font-family: "Raleway", sans-serif;
 	color: rgb(38, 103, 183);
-	padding-bottom: 0;
 }
 
-img {
+#main-image {
 	width: 100%;
 	height: auto;
+	margin: 2.5%;
+	margin-top: 0;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 #subject, #message, #submit, #nirvana, #tags {
@@ -51,14 +54,14 @@ label, #subject, #message, #tags {
 	display: none;
 }
 
-#links {
+#links, #status {
 	width: 100%;
 	display: flex;
 	font-size: 20px;
 	font-weight: 600;
 }
 
-#submit, #nirvana {
+#links div, #status div {
 	width: 40%;
 	margin: 10px 2.5%;
 	display: inline-block;
@@ -78,7 +81,7 @@ label, #subject, #message, #tags {
 }
 
 #submit span,
-#nirvana span {
+#nirvana span{
 	padding-top: 10px;
 	display: inline-block;
 	font-size: 14.5px;
@@ -86,8 +89,7 @@ label, #subject, #message, #tags {
 	letter-spacing: 2px;
 }
 
-#success, #error, #load {
-	margin: 10px;
+#status div {
 	padding: 10px 20px;
 	width: 100%;
 	display: none;

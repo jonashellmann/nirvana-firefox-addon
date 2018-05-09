@@ -5,7 +5,7 @@
 	</head>
 	
 	<body>
-		<img src="../images/action-creator-for-nirvana.png" />
+		<img id="main-image" src="../images/action-creator-for-nirvana.png" />
 		
 		<label for="subject">Action Title</label>
 		<br />
@@ -24,7 +24,7 @@
 		<input id="tags" class="tags" type="text" name="tags" placeholder="Tag 1, Tag 2"/>
 		<br class="tags"/>
 		<br class="tags"/>
-
+		
 		<div id="links" >
 			<div id="submit">
 				<span>Create Action</span>
@@ -33,12 +33,14 @@
 				<span>Open Nirvana</span>
 			</div>
 		</div>
-
-		<span id="load"></span>
-		<span id="success"></span>
-		<span id="error"></span>
 		
-		<img id="settings" src="../images/settings.png"/>
+		<div id="status">
+			<div id="load"></div>
+			<div id="success"></div>
+			<div id="error"></div>
+		</div>
+
+		<!-- <img id="settings" src="../images/settings.png"/> -->
 		
 		<script src="popup.js"></script>
 	</body>

@@ -14,7 +14,7 @@ function saveOptions(e) {
 			// TODO Generate token already here? 
 			// But what if no Internet connection available at this time then? 
 			username: document.querySelector("#username").value,
-			password: MD5(document.querySelector("#password").value)
+			passwordHash: MD5(document.querySelector("#password").value)
 		},
 	};
 	    

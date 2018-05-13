@@ -15,14 +15,14 @@ function handleInstalled(details) {
             settings: {
                 inboxmail: 'example@nirvana.com',
 				username: 'username@example.com',
-				password: ''
+				passwordHash: ''
             },
         });
 	}
 }
 
 function onUpdateSettings(settings) {
-	if(settings.inboxmail !== 'example@nirvana.com' || (settings.username !== 'username@example.com' && settings.password !== '')) {
+	if(settings.inboxmail !== 'example@nirvana.com' || (settings.username !== 'username@example.com' && settings.passwordHash !== '')) {
 		browser.browserAction.setPopup({popup: 'popup/popup.html'});
 	}
 	else {
@@ -51,11 +51,11 @@ function createTask(msg) {
 		return;
 	}
 	
-	if((msg.username == 'username@example.com' || msg.password == '') || msg.sendViaMail === true) {
+	if((msg.username == 'username@example.com' || msg.passwordHash == '') || msg.sendViaMail === true) {
 		createTaskViaMail(msg.inboxmail, msg.subject, msg.message);
 	}
 	else {
-		createTaskViaAPI(msg.username, msg.password, msg.subject, msg.message, msg.tags);
+		createTaskViaAPI(msg.username, msg.passwordHash, msg.subject, msg.message, msg.tags);
 	}
 }
 
@@ -64,8 +64,8 @@ function createTaskViaMail(inboxmail, subject, message) {
 	var creating = browser.tabs.create({url: mailtourl});
 }
 
-function createTaskViaAPI(username, password, subject, note, tags) {
-	getAuthToken(username, password)
+function createTaskViaAPI(username, passwordHash, subject, note, tags) {
+	getAuthToken(username, passwordHash)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
 

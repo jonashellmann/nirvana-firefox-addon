@@ -87,7 +87,7 @@ function createTaskViaAPI(username, passwordHash, subject, note, tags) {
 }
 
 function getAuthToken(username, passwordHash) {
-	var body = 'method=auth.new&u=' + username + '&p=' + passwordHash;
+	var body = 'method=auth.new&u=' + encodeURIComponent(username) + '&p=' + encodeURIComponent(passwordHash);
 	var headers = new Headers();
 	headers.append('Content-Type', 'application/x-www-form-urlencoded');
 	

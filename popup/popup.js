@@ -1,3 +1,7 @@
+const default_nirvanamail = 'example@nirvana.com';
+const default_username = 'username@example.com';
+const default_password = 'd41d8cd98f00b204e9800998ecf8427e'; // Password hash of empty string
+
 document.getElementById('submit').addEventListener('click', function(){
 	showLoad();
 	initActionCreation(false);
@@ -27,7 +31,7 @@ var getSettings = browser.storage.local.get("settings");
 getSettings.then((res) => {
 	const {settings} = res;
 	
-	if(isUsernameDefined(settings.username) && isPasswordDefined(settings.passwordHash)) {
+	if(isUsernameAndPasswordDefined(settings.username, settings.passwordHash)) {
 		var tags = document.getElementsByClassName('tags');
 		for (var i = 0; i < tags.length; i++) {
 			tags[i].style.display = 'inline';
@@ -35,12 +39,16 @@ getSettings.then((res) => {
 	}
 });
 
+function isUsernameAndPasswordDefined(username, passwordHash) {
+	return isUsernameDefined(username) && isPasswordDefined(passwordHash);
+}
+
 function isUsernameDefined(username) {
-	return username !== '' && username !== 'username@example.com';
+	return username !== '' && username !== default_username;
 }
 
 function isPasswordDefined(passwordHash) {
-	return passwordHash !== '' && passwordHash !== 'd41d8cd98f00b204e9800998ecf8427e'; // Password empty or hash of empty string
+	return passwordHash !== '' && passwordHash !== default_password;
 }
 
 function showLoad() {

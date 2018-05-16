@@ -1,9 +1,12 @@
+const default_nirvanamail = 'example@nirvana.com';
+const default_username = 'username@example.com';
+const default_password = 'd41d8cd98f00b204e9800998ecf8427e';
+
 function buttonClicked() {
 	var getSettings =  browser.storage.local.get("settings");
 	getSettings.then((res) => {
 		const {settings} = res;
-		var inboxmail = settings.inboxmail;
-		if(inboxmail === 'example@nirvana.com') {
+		if(!hasSettingsChanged(settings.inboxmail, settings.username, settings.passwordHash)) {
 			openOptionsPage();
 		}
 	});
@@ -13,16 +16,16 @@ function handleInstalled(details) {
 	if(details.reason=="install") {
 		browser.storage.local.set({
             settings: {
-                inboxmail: 'example@nirvana.com',
-				username: 'username@example.com',
-				passwordHash: ''
+                inboxmail: default_nirvanamail,
+				username: default_username,
+				passwordHash: default_password
             },
         });
 	}
 }
 
 function onUpdateSettings(settings) {
-	if(settings.inboxmail !== 'example@nirvana.com' || (settings.username !== 'username@example.com' && settings.passwordHash !== '')) {
+	if(hasSettingsChanged(settings.inboxmail, settings.username, settings.passwordHash)) {
 		browser.browserAction.setPopup({popup: 'popup/popup.html'});
 	}
 	else {
@@ -51,7 +54,7 @@ function createTask(msg) {
 		return;
 	}
 	
-	if((msg.username == 'username@example.com' || msg.passwordHash == '') || msg.sendViaMail === true) {
+	if(!isUsernameAndPasswordDefined(msg.username, msg.passwordHash) || msg.sendViaMail === true) {
 		createTaskViaMail(msg.inboxmail, msg.subject, msg.message);
 	}
 	else {
@@ -128,6 +131,26 @@ function sendSuccessMessage(message) {
 
 function openOptionsPage() {
 	browser.runtime.openOptionsPage();
+}
+
+function hasSettingsChanged(inboxmail, username, passwordHash) {
+	return isNirvanaMailDefined(inboxmail) || isUsernameAndPasswordDefined(username, passwordHash);
+}
+
+function isNirvanaMailDefined(inboxmail) {
+	return inboxmail !== '' && inboxmail != default_nirvanamail;
+}
+
+function isUsernameAndPasswordDefined(username, passwordHash) {
+	return isUsernameDefined(username) && isPasswordDefined(passwordHash);
+}
+
+function isUsernameDefined(username) {
+	return username !== '' && username !== default_username;
+}
+
+function isPasswordDefined(passwordHash) {
+	return passwordHash !== '' && passwordHash !== default_password;
 }
 
 browser.browserAction.onClicked.addListener(buttonClicked);

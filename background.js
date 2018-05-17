@@ -71,9 +71,23 @@ function createTaskViaAPI(username, passwordHash, subject, note, tags) {
 	getAuthToken(username, passwordHash)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
-
-			note = note.replace("\n", "\\n");
-			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + subject + '","_name":' + now +',"tags":"' + tags + '","_tags":' + now + ',"note":"' + note + '","_note":' + now + '}]';
+			
+			var json = 
+				[{
+					method: "task.save",
+					id: uuidv4(),
+					name: subject,
+					_name: now,
+					tags: tags,
+					_tags: now,
+					note: note,
+					_note: now,
+					type: 0,
+					_type: now,
+					state: 0,
+					_state: now
+				}];
+			var body = JSON.stringify(json);
 			var headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			

@@ -72,7 +72,8 @@ function createTaskViaAPI(username, passwordHash, subject, note, tags) {
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
 
-			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + subject + '","_name":' + now +',"tags":"' + tags + '","_tags":' + now + ',"note":"' + note + '","_note":' + now + '}]';			
+			note = note.replace("\n", "\\n");
+			var body = '[{"method":"task.save","id":"' + uuidv4() + '","type": 0,"_type":' + now + ',"state":0,"_state":' + now + ',"name":"' + subject + '","_name":' + now +',"tags":"' + tags + '","_tags":' + now + ',"note":"' + note + '","_note":' + now + '}]';
 			var headers = new Headers();
 			headers.append('Content-Type', 'application/json');
 			

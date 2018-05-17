@@ -7,12 +7,7 @@
 	<body>
 		<h2>Options</h2>
 		<form class="optionsForm">
-			<label id="mail_label">
-				The Nirvana Mail for your Inbox
-				You find this mail by going into the settings,
-				choosing 'Manage Account' and then 'Creating tasks via Email'.
-			</label>
-			<input type="text" id="mail" size="60" >
+		
 			<label id="username_label">
 				The e-mail you use to log into Nirvana.
 			</label>
@@ -21,7 +16,16 @@
 				Your Nirvana password. (The password will be encrypted.)
 			</label>
 			<input type="password" id="password" size="60" >
+			
+			<label id="mail_label">
+				The Nirvana Mail for your Inbox
+				You find this mail by going into the settings,
+				choosing 'Manage Account' and then 'Creating tasks via Email'.
+			</label>
+			<input type="text" id="mail" size="60" >
+
 			<div id="empty"></div>
+			
 			<button type="submit" id="savebutton">SAVE</button>
 		</form>
 		<script src="options.js"></script>

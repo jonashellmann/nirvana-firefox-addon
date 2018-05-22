@@ -58,7 +58,7 @@ function createTask(msg) {
 		createTaskViaMail(msg.inboxmail, msg.subject, msg.message);
 	}
 	else {
-		createTaskViaAPI(msg.username, msg.passwordHash, msg.subject, msg.message, msg.tags);
+		createTaskViaAPI(msg.username, msg.passwordHash, msg.subject, msg.message, msg.tags, msg.duedate, msg.etime, msg.energy);
 	}
 }
 
@@ -67,10 +67,13 @@ function createTaskViaMail(inboxmail, subject, message) {
 	var creating = browser.tabs.create({url: mailtourl});
 }
 
-function createTaskViaAPI(username, passwordHash, subject, note, tags) {
+function createTaskViaAPI(username, passwordHash, subject, note, tags, duedate, etime, energy) {
 	getAuthToken(username, passwordHash)
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
+			
+			console.log('Energy: ' + energy);
+			console.log('Datum: ' + duedate);
 			
 			var json = 
 				[{
@@ -85,7 +88,13 @@ function createTaskViaAPI(username, passwordHash, subject, note, tags) {
 					type: 0,
 					_type: now,
 					state: 0,
-					_state: now
+					_state: now,
+					duedate: duedate,
+					_duedate: now,
+					etime: etime,
+					_etime: now,
+					energy: energy,
+					_energy: now
 				}];
 			var body = JSON.stringify(json);
 			var headers = new Headers();

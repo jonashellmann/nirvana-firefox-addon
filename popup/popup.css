@@ -19,7 +19,7 @@ body {
 	cursor: pointer;
 }
 
-#subject, #message, #submit, #nirvana, #tags {
+#subject, #message, #submit, #nirvana, #tags, #energy, #etime, #duedate {
 	border-radius: 2px;
 	height: 40px;
 	padding: 5px 10px;
@@ -32,12 +32,12 @@ label {
 	color: grey;
 }
 
-label, #subject, #message, #tags {
+label, #subject, #message, #tags, #energy, #etime, #duedate {
 	width: 95%;
 	margin: 0 2,5%;
 }
 
-#subject, #message, #tags {
+#subject, #message, #tags, #energy, #etime, #duedate {
 	color: rgb(38, 103, 183);
 	font-weight: 600;
 	font-size: 16px;
@@ -50,8 +50,8 @@ label, #subject, #message, #tags {
 	height: 120px;
 }
 
-.tags {
-	display: none;
+.hide {
+	display: inline;
 }
 
 #links, #status {

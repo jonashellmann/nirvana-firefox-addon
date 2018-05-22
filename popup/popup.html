@@ -7,23 +7,60 @@
 	<body>
 		<img id="main-image" src="../images/action-creator-for-nirvana.png" />
 		
-		<label for="subject">Action Title</label>
+		<label for="subject">Title</label>
 		<br />
 		<input id="subject" type="text" name="subject" />
 		<br />
 		<br />
 		
-		<label for="message">Action Notes</label>
+		<label for="message">Notes</label>
 		<br />
 		<textarea id="message" name="message"></textarea>
 		<br />
 		<br />
 		
-		<label class="tags" for="tags">Action Tags</label>
-		<br class="tags"/>
-		<input id="tags" class="tags" type="text" name="tags" placeholder="Tag 1, Tag 2"/>
-		<br class="tags"/>
-		<br class="tags"/>
+		<label class="hide" for="tags">Tags</label>
+		<br class="hide"/>
+		<input id="tags" class="hide" type="text" name="tags" placeholder="Tag 1, Tag 2"/>
+		<br class="hide"/>
+		<br class="hide"/>
+		
+		<label class="hide" for="energy">Energy</label>
+		<br class="hide"/>
+		<select class="hide" id="energy" name="energy">
+			<option value="0" selected="selected">none</option>
+			<option value="1">low</option>
+			<option value="2">medium</option>
+			<option value="3">high</option>
+		</select>
+		<br class="hide"/>
+		<br class="hide"/>
+		
+		<label class="hide" for="etime">Time</label>
+		<br class="hide"/>
+		<select class="hide" id="etime" name="etime">
+			<option value="0" selected="selected">none</option>
+			<option value="5">5 minutes</option>
+			<option value="10">10 minutes</option>
+			<option value="15">15 minutes</option>
+			<option value="30">30 minutes</option>
+			<option value="45">45 minutes</option>
+			<option value="60">1 hour</option>
+			<option value="120">2 hours</option>
+			<option value="180">3 hours</option>
+			<option value="240">4 hours</option>
+			<option value="360">6 hours</option>
+			<option value="480">8 hours</option>
+			<option value="600">whoa nelly!</option>
+		</select>
+		<br class="hide"/>
+		<br class="hide"/>
+		
+		<label class="hide" for="duedate">Due Date</label>
+		<br class="hide"/>
+		<input id="duedate" class="hide" type="date" name="duedate"/>
+		<br class="hide"/>
+		<br class="hide"/>
 		
 		<div id="links" >
 			<div id="submit">

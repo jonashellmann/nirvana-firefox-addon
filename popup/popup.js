@@ -32,9 +32,9 @@ getSettings.then((res) => {
 	const {settings} = res;
 	
 	if(isUsernameAndPasswordDefined(settings.username, settings.passwordHash)) {
-		var tags = document.getElementsByClassName('tags');
-		for (var i = 0; i < tags.length; i++) {
-			tags[i].style.display = 'inline';
+		var hides = document.getElementsByClassName('hide');
+		for (var i = 0; i < hides.length; i++) {
+			hides[i].style.display = 'inline';
 		}
 	}
 });
@@ -96,6 +96,9 @@ function initActionCreation(sendViaMail) {
 			subject: document.getElementById('subject').value,
 			message: document.getElementById('message').value,
 			tags: document.getElementById('tags').value,
+			energy: parseInt(document.getElementById('energy').value),
+			etime: parseInt(document.getElementById('etime').value),
+			duedate: document.getElementById('duedate').value.replace(/-/g, ''),
 			sendViaMail: sendViaMail
 		});
 	});

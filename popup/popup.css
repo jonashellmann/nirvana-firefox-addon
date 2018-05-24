@@ -47,11 +47,29 @@ label, #subject, #message, #tags, #energy, #etime, #duedate {
 
 #message {
 	max-width: 380px;
-	height: 120px;
+	height: 70px;
 }
 
 .hide {
 	display: inline;
+}
+
+.flex {
+	display: flex;
+	width: 95%;
+	margin: auto;
+}
+
+.flex div {
+	width: 50%;
+}
+
+#etime, #duedate {
+	margin-left: 5%;
+}
+
+#energy, #tags {
+	margin-right: 5%;
 }
 
 #links, #status {

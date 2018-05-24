@@ -51,7 +51,7 @@ label, #subject, #message, #tags, #energy, #etime, #duedate {
 }
 
 .hide {
-	display: inline;
+	display: none;
 }
 
 .flex {

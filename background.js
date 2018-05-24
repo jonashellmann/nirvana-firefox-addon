@@ -72,9 +72,6 @@ function createTaskViaAPI(username, passwordHash, subject, note, tags, duedate, 
 		.then(token => {
 			var now = Math.floor( Date.now() / 1000 );
 			
-			console.log('Energy: ' + energy);
-			console.log('Datum: ' + duedate);
-			
 			var json = 
 				[{
 					method: "task.save",
